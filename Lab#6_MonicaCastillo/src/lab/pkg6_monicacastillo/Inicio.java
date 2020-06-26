@@ -34,6 +34,8 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         setLocationRelativeTo(null);
+        pb = new HiloProgressBar(ProgressBarHilo);
+        pb.start();
     }
 
     /**
@@ -62,6 +64,7 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         TreeSeresVivos = new javax.swing.JTree();
         jLabel12 = new javax.swing.JLabel();
+        ProgressBarHilo = new javax.swing.JProgressBar();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         ModificarAtributo = new javax.swing.JComboBox<>();
@@ -119,6 +122,12 @@ public class Inicio extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("JTree Seres Vivos");
 
+        ProgressBarHilo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ProgressBarHilo.setForeground(new java.awt.Color(255, 102, 51));
+        ProgressBarHilo.setMaximum(1000);
+        ProgressBarHilo.setString("");
+        ProgressBarHilo.setStringPainted(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,7 +154,9 @@ public class Inicio extends javax.swing.JFrame {
                                 .addComponent(AgregarSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(52, 52, 52)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ProgressBarHilo, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(91, 91, 91)
@@ -182,10 +193,12 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(RazaSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(AgregarSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane6))
+                            .addComponent(RazaSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AgregarSerVivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProgressBarHilo, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -292,18 +305,19 @@ public class Inicio extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(jLabel8)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(253, 253, 253)
+                                .addComponent(EliminarSerVivo))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(268, 268, 268)
+                                .addComponent(jLabel8)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(EliminarSerVivo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,6 +474,7 @@ public class Inicio extends javax.swing.JFrame {
             filechooser.setFileFilter(filtro);
             int seleccion = filechooser.showOpenDialog(this);
             if (seleccion == JFileChooser.APPROVE_OPTION) {
+                selectedFile = filechooser.getSelectedFile();
                 fichero = filechooser.getSelectedFile();
                 fr = new FileReader(fichero);
                 br = new BufferedReader(fr);
@@ -491,12 +506,9 @@ public class Inicio extends javax.swing.JFrame {
                 TablaSeresVivosEliminar.setModel(modelo);
                 TablaSeresVivosModificar.setModel(modelo);
                 DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
-//                Universo uni = new Universo(selectedFile.getPath());
-//                uni.CargarArchivo2();
-//                uni.EliminarElemento((cb.getElementAt(pos));
-//                DefaultComboBoxModel model = (DefaultComboBoxModel) cb_elimsv.getModel();
-//                model.removeElement(cb_elimsv.getSelectedItem());
-//                cb_elimsv.setModel(model);
+                Universo uni = new Universo(selectedFile.getPath());
+                uni.CargarArchivo2();
+                uni.EliminarElemento(((SerVivo) cb.getElementAt(pos)).getNombre());
                 cb.removeElementAt(pos);
                 CBSeresVivos.setModel(cb);
                 JOptionPane.showMessageDialog(null, "Se elimino con exito");
@@ -646,7 +658,6 @@ public class Inicio extends javax.swing.JFrame {
             raza = RazaSerVivo.getSelectedItem().toString();
             if (poder >= 1 && poder <= 10) {
                 SerVivo sv = new SerVivo(nombre, poder, años, planeta, raza);
-                seresvivos.add(sv);
                 Object[] newrow = {nombre, poder, años, planeta, raza};
                 DefaultTableModel modelo = (DefaultTableModel) TablaSeresVivosEliminar.getModel();
                 modelo.addRow(newrow);
@@ -655,8 +666,8 @@ public class Inicio extends javax.swing.JFrame {
                 DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
                 cb.addElement(sv);
                 CBSeresVivos.setModel(cb);
-                uni.getSeresvivos().add(sv);
-                System.out.println(uni.getSeresvivos());
+//                uni.getSeresvivos().add(sv);
+
                 JOptionPane.showMessageDialog(this, "Ser vivo agregado exitosamente");
                 DefaultTreeModel m = (DefaultTreeModel) TreeSeresVivos.getModel();
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
@@ -699,76 +710,49 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel modeloy = (DefaultTableModel) TablaDatosSeresVivos.getModel();
         if (modeloy.getRowCount() != 0) {
-            if (selectedFile != null) {
-                DefaultTableModel modelot = (DefaultTableModel) TablaDatosSeresVivos.getModel();
-                String acum = "";
-                for (int i = 0; i < modelot.getRowCount(); i++) {
-                    for (int j = 0; j < modelot.getColumnCount(); j++) {
-                        if (j == modelot.getColumnCount() - 1) {
-                            acum += modelot.getValueAt(i, j);
-                        } else {
-                            acum += modelot.getValueAt(i, j) + "|";
-                        } // Fin If
-                    } // Fin For
-                    acum += "\n";
-                } // Fin For
-                FileWriter fw;
+            JFileChooser jfc = new JFileChooser("./");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Texto", "txt");
+            jfc.setFileFilter(filtro);
+            int seleccion = jfc.showSaveDialog(this);
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
                 try {
+                    if (jfc.getFileFilter().getDescription().equals("Archivo de Texto")) {
+                        selectedFile = new File(jfc.getSelectedFile().getPath() + ".txt");
+                    } else {
+                        selectedFile = jfc.getSelectedFile();
+                    } // Fin If
                     fw = new FileWriter(selectedFile);
-                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw = new BufferedWriter(fw);
+                    DefaultTableModel modelo = (DefaultTableModel) TablaDatosSeresVivos.getModel();
+                    String acum = "";
+                    for (int i = 0; i < modelo.getRowCount(); i++) {
+                        for (int j = 0; j < modelo.getColumnCount(); j++) {
+                            if (j == modelo.getColumnCount() - 1) {
+                                acum += modelo.getValueAt(i, j);
+                            } else {
+                                acum += modelo.getValueAt(i, j) + "|";
+                            } // Fin If
+                        } // Fin For
+                        acum += "\n";
+                    } // Fin For
                     bw.write(acum);
                     bw.flush();
-                    JOptionPane.showMessageDialog(this, "¡Se han guardado los nuevos datos!");
+                    JOptionPane.showMessageDialog(this, "¡Se ha guardado exitosamente el archivo!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } // Fin Try Catch
+                try {
                     bw.close();
                     fw.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                } catch (IOException io) {
+                    io.printStackTrace();
                 } // Fin Try Catch
-            } else {
-                JFileChooser jfc = new JFileChooser("./");
-                FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Texto", "txt");
-                jfc.setFileFilter(filtro);
-                int seleccion = jfc.showSaveDialog(this);
-                FileWriter fw = null;
-                BufferedWriter bw = null;
-                if (seleccion == JFileChooser.APPROVE_OPTION) {
-                    try {
-                        if (jfc.getFileFilter().getDescription().equals("Archivo de Texto")) {
-                            selectedFile = new File(jfc.getSelectedFile().getPath() + ".txt");
-                        } else {
-                            selectedFile = jfc.getSelectedFile();
-                        } // Fin If
-                        fw = new FileWriter(selectedFile);
-                        bw = new BufferedWriter(fw);
-                        DefaultTableModel modelo = (DefaultTableModel) TablaDatosSeresVivos.getModel();
-                        String acum = "";
-                        for (int i = 0; i < modelo.getRowCount(); i++) {
-                            for (int j = 0; j < modelo.getColumnCount(); j++) {
-                                if (j == modelo.getColumnCount() - 1) {
-                                    acum += modelo.getValueAt(i, j);
-                                } else {
-                                    acum += modelo.getValueAt(i, j) + "|";
-                                } // Fin If
-                            } // Fin For
-                            acum += "\n";
-                        } // Fin For
-                        bw.write(acum);
-                        bw.flush();
-                        JOptionPane.showMessageDialog(this, "¡Se ha guardado exitosamente el nuevo archivo!");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } // Fin Try Catch
-                    try {
-                        bw.close();
-                        fw.close();
-                    } catch (IOException io) {
-                        io.printStackTrace();
-                    } // Fin Try Catch
-                } // Fin If
             } // Fin If
         } else {
             JOptionPane.showMessageDialog(this, "¡La tabla debe tener por lo menos 1 ser vivo!");
-        }
+        } // Fin If
     }//GEN-LAST:event_GuardarArchivoMouseClicked
 
     private void CBSeresVivosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBSeresVivosItemStateChanged
@@ -834,6 +818,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField NombreSerVivo;
     private javax.swing.JTextField PlanetaSerVivo;
     private javax.swing.JFormattedTextField PoderSerVivo;
+    private javax.swing.JProgressBar ProgressBarHilo;
     private javax.swing.JComboBox<String> RazaSerVivo;
     private javax.swing.JTable TablaDatosSeresVivos;
     private javax.swing.JTable TablaSeresVivosEliminar;
@@ -863,7 +848,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-static ArrayList<SerVivo> seresvivos = new ArrayList();
-    static Universo uni = new Universo();
+Universo uni = new Universo();
     File selectedFile = null;
+    HiloProgressBar pb;
+
 }
