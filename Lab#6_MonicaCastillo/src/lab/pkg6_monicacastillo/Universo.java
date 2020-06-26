@@ -56,6 +56,10 @@ public class Universo {
         this.seresvivos = seresvivos;
     }
 
+    public void SetSerVivo(SerVivo sv) {
+        this.seresvivos.add(sv);
+    }
+
     @Override
     public String toString() {
         return "Universo{" + "nombre=" + nombre + ", archivo=" + archivo + ", seresvivos=" + seresvivos + '}';
@@ -82,24 +86,23 @@ public class Universo {
         fw.close();
     }
 
-    public void CargarArchivo(JTextArea TextArea) {
-        try {
-            FileReader fr = null;
-            BufferedReader br = null;
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                TextArea.append(linea);
-                TextArea.append("\n");
-            }
-            br.close();
-            fr.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+//    public void CargarArchivo(JTextArea TextArea) {
+//        try {
+//            FileReader fr = null;
+//            BufferedReader br = null;
+//            fr = new FileReader(archivo);
+//            br = new BufferedReader(fr);
+//            String linea;
+//            while ((linea = br.readLine()) != null) {
+//                TextArea.append(linea);
+//                TextArea.append("\n");
+//            } // Fin While
+//            br.close();
+//            fr.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } // Fin Try Catch
+//    } // Fin Cargar Archivo
     public void CargarArchivo2() {
         Scanner entrada = null;
         seresvivos = new ArrayList();
@@ -109,11 +112,25 @@ public class Universo {
                 entrada.useDelimiter("|");
                 while (entrada.hasNext()) {
                     seresvivos.add(new SerVivo(entrada.next(), entrada.nextInt(), entrada.nextInt(), entrada.next(), entrada.next()));
-                }
+                } // Fin While
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            } // Fin Try Catch
             entrada.close();
-        }
-    }
-}
+        } // Fin If
+    } // Fin Cargar Archivo2
+
+    public void EliminarElemento(String n) throws IOException {
+        try {
+            CargarArchivo2();
+            for (int i = 0; i < seresvivos.size(); i++) {
+                if (seresvivos.get(i).getNombre().equals(n)) {
+                    seresvivos.remove(i);
+                } // Fin If
+            } // Fin For
+            EscribirArchivo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } // Fin Try Catch
+    } // Fin Eliminar Elemento
+} // Fin Eliminar Elemento

@@ -19,6 +19,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -57,6 +59,9 @@ public class Inicio extends javax.swing.JFrame {
         PlanetaSerVivo = new javax.swing.JTextField();
         RazaSerVivo = new javax.swing.JComboBox<>();
         AgregarSerVivo = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        TreeSeresVivos = new javax.swing.JTree();
+        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         ModificarAtributo = new javax.swing.JComboBox<>();
@@ -81,6 +86,7 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Agregar Ser Vivo");
 
         jLabel2.setText("Nombre: ");
@@ -106,6 +112,13 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Seres Vivos");
+        TreeSeresVivos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane6.setViewportView(TreeSeresVivos);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("JTree Seres Vivos");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,48 +133,59 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PlanetaSerVivo)
+                    .addComponent(RazaSerVivo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PoderSerVivo)
                     .addComponent(AñosSerVivo)
-                    .addComponent(PlanetaSerVivo)
-                    .addComponent(RazaSerVivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NombreSerVivo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NombreSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(AgregarSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 263, Short.MAX_VALUE)
-                .addComponent(AgregarSerVivo)
-                .addGap(252, 252, 252))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(271, 271, 271)
+                .addGap(91, 91, 91)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(91, 91, 91))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel12))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(NombreSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(PoderSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(AñosSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(PlanetaSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(RazaSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(AgregarSerVivo, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(NombreSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(PoderSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(AñosSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(PlanetaSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(RazaSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(AgregarSerVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane6))
                 .addContainerGap())
         );
 
@@ -426,24 +450,56 @@ public class Inicio extends javax.swing.JFrame {
 
     private void CargarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarArchivoMouseClicked
         // TODO add your handling code here:
-        Universo u = new Universo(selectedFile.getPath());
-        u.CargarArchivo(TextAreaArchivo);
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        TextAreaArchivo.setText("");
+        try {
+            JFileChooser filechooser = new JFileChooser("./");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Texto", "txt");
+            filechooser.setFileFilter(filtro);
+            int seleccion = filechooser.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                fichero = filechooser.getSelectedFile();
+                fr = new FileReader(fichero);
+                br = new BufferedReader(fr);
+                String linea;
+                TextAreaArchivo.setText("");
+                while ((linea = br.readLine()) != null) {
+                    TextAreaArchivo.append(linea);
+                    TextAreaArchivo.append("\n");
+                } // Fin While
+            } // Fin If 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } // Fin Try Catch
+        try {
+            br.close();
+            fr.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } // Fin Try Catch
     }//GEN-LAST:event_CargarArchivoMouseClicked
 
     private void EliminarSerVivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarSerVivoMouseClicked
         // TODO add your handling code here:
         try {
             if (TablaSeresVivosEliminar.getSelectedRow() >= 0) {
+                int pos = TablaSeresVivosEliminar.getSelectedRow();
                 DefaultTableModel modelo = (DefaultTableModel) TablaSeresVivosEliminar.getModel();
                 modelo.removeRow(TablaSeresVivosEliminar.getSelectedRow());
                 TablaSeresVivosEliminar.setModel(modelo);
                 TablaSeresVivosModificar.setModel(modelo);
-                // Se supone que deberia eliminar del archivo pero no lo hace :(
+                DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
 //                Universo uni = new Universo(selectedFile.getPath());
-//                uni.CargarArchivo(TextAreaArchivo);
-//                int pos = TablaSeresVivosEliminar.getSelectedRow();
-//                uni.getSeresvivos().remove(pos);
-//                uni.EscribirArchivo();
+//                uni.CargarArchivo2();
+//                uni.EliminarElemento((cb.getElementAt(pos));
+//                DefaultComboBoxModel model = (DefaultComboBoxModel) cb_elimsv.getModel();
+//                model.removeElement(cb_elimsv.getSelectedItem());
+//                cb_elimsv.setModel(model);
+                cb.removeElementAt(pos);
+                CBSeresVivos.setModel(cb);
+                JOptionPane.showMessageDialog(null, "Se elimino con exito");
             } // Fin If
         } catch (Exception e) {
             e.printStackTrace();
@@ -459,11 +515,15 @@ public class Inicio extends javax.swing.JFrame {
             switch (ModificarAtributo.getSelectedIndex()) {
                 case 0:
                     if (TablaSeresVivosModificar.getSelectedRow() >= 0) {
+                        int pos = TablaSeresVivosModificar.getSelectedRow();
                         DefaultTableModel modelo = (DefaultTableModel) TablaSeresVivosModificar.getModel();
                         nombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre: ");
                         modelo.setValueAt(nombre, TablaSeresVivosModificar.getSelectedRow(), 0);
                         TablaSeresVivosModificar.setModel(modelo);
                         TablaSeresVivosEliminar.setModel(modelo);
+                        DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
+                        ((SerVivo) cb.getElementAt(pos)).setNombre(nombre);
+                        CBSeresVivos.setModel(cb);
 //                        Universo uni = new Universo(selectedFile.getPath());
 //                        uni.CargarArchivo(TextAreaArchivo);
 //                        int pos = TablaSeresVivosModificar.getSelectedRow();
@@ -473,11 +533,15 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 case 1:
                     if (TablaSeresVivosModificar.getSelectedRow() >= 0) {
+                        int pos = TablaSeresVivosModificar.getSelectedRow();
                         DefaultTableModel modelo1 = (DefaultTableModel) TablaSeresVivosModificar.getModel();
                         poder = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo poder: "));
                         modelo1.setValueAt(poder, TablaSeresVivosModificar.getSelectedRow(), 1);
                         TablaSeresVivosModificar.setModel(modelo1);
                         TablaSeresVivosEliminar.setModel(modelo1);
+                        DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
+                        ((SerVivo) cb.getElementAt(pos)).setPoder(poder);
+                        CBSeresVivos.setModel(cb);
 //                        Universo uni = new Universo(selectedFile.getPath());
 //                        uni.CargarArchivo(TextAreaArchivo);
 //                        int pos = TablaSeresVivosModificar.getSelectedRow();
@@ -487,11 +551,15 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 case 2:
                     if (TablaSeresVivosModificar.getSelectedRow() >= 0) {
+                        int pos = TablaSeresVivosModificar.getSelectedRow();
                         DefaultTableModel modelo2 = (DefaultTableModel) TablaSeresVivosModificar.getModel();
                         años = Integer.parseInt(JOptionPane.showInputDialog("Ingrese los nuevos años: "));
                         modelo2.setValueAt(años, TablaSeresVivosModificar.getSelectedRow(), 2);
                         TablaSeresVivosModificar.setModel(modelo2);
                         TablaSeresVivosEliminar.setModel(modelo2);
+                        DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
+                        ((SerVivo) cb.getElementAt(pos)).setAños(años);
+                        CBSeresVivos.setModel(cb);
 //                        Universo uni = new Universo(selectedFile.getPath());
 //                        uni.CargarArchivo(TextAreaArchivo);
 //                        int pos = TablaSeresVivosModificar.getSelectedRow();
@@ -501,11 +569,15 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 case 3:
                     if (TablaSeresVivosModificar.getSelectedRow() >= 0) {
+                        int pos = TablaSeresVivosModificar.getSelectedRow();
                         DefaultTableModel modelo3 = (DefaultTableModel) TablaSeresVivosModificar.getModel();
                         planeta = JOptionPane.showInputDialog("Ingrese el nuevo planeta: ");
                         modelo3.setValueAt(planeta, TablaSeresVivosModificar.getSelectedRow(), 3);
                         TablaSeresVivosModificar.setModel(modelo3);
                         TablaSeresVivosEliminar.setModel(modelo3);
+                        DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
+                        ((SerVivo) cb.getElementAt(pos)).setPlaneta(planeta);
+                        CBSeresVivos.setModel(cb);
 //                        Universo uni = new Universo(selectedFile.getPath());
 //                        uni.CargarArchivo(TextAreaArchivo);
 //                        int pos = TablaSeresVivosModificar.getSelectedRow();
@@ -515,6 +587,7 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 case 4:
                     if (TablaSeresVivosModificar.getSelectedRow() >= 0) {
+                        int pos = TablaSeresVivosModificar.getSelectedRow();
                         DefaultTableModel modelo4 = (DefaultTableModel) TablaSeresVivosModificar.getModel();
                         int opcion = Integer.parseInt(JOptionPane.showInputDialog("1. Humano" + "\n" + "2. Amanto" + "\n" + "Ingrese la nueva raza: "));
                         switch (opcion) {
@@ -523,6 +596,9 @@ public class Inicio extends javax.swing.JFrame {
                                 modelo4.setValueAt(raza, TablaSeresVivosModificar.getSelectedRow(), 4);
                                 TablaSeresVivosModificar.setModel(modelo4);
                                 TablaSeresVivosEliminar.setModel(modelo4);
+                                DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
+                                ((SerVivo) cb.getElementAt(pos)).setRaza(raza);
+                                CBSeresVivos.setModel(cb);
 //                        Universo uni = new Universo(selectedFile.getPath());
 //                        uni.CargarArchivo(TextAreaArchivo);
 //                        int pos = TablaSeresVivosModificar.getSelectedRow();
@@ -534,6 +610,9 @@ public class Inicio extends javax.swing.JFrame {
                                 modelo4.setValueAt(raza, TablaSeresVivosModificar.getSelectedRow(), 4);
                                 TablaSeresVivosModificar.setModel(modelo4);
                                 TablaSeresVivosEliminar.setModel(modelo4);
+                                DefaultComboBoxModel cb1 = (DefaultComboBoxModel) CBSeresVivos.getModel();
+                                ((SerVivo) cb1.getElementAt(pos)).setRaza(raza);
+                                CBSeresVivos.setModel(cb1);
 //                        Universo uni = new Universo(selectedFile.getPath());
 //                        uni.CargarArchivo(TextAreaArchivo);
 //                        int pos = TablaSeresVivosModificar.getSelectedRow();
@@ -559,25 +638,44 @@ public class Inicio extends javax.swing.JFrame {
         String nombre, planeta, raza;
         int poder, años;
         try {
+            // Agrego un Ser Vivo a el ArrayList
             nombre = NombreSerVivo.getText();
             poder = Integer.parseInt(PoderSerVivo.getText());
             años = Integer.parseInt(AñosSerVivo.getText());
             planeta = PlanetaSerVivo.getText();
             raza = RazaSerVivo.getSelectedItem().toString();
             if (poder >= 1 && poder <= 10) {
-                seresvivos.add(new SerVivo(nombre, poder, años, planeta, raza));
+                SerVivo sv = new SerVivo(nombre, poder, años, planeta, raza);
+                seresvivos.add(sv);
                 Object[] newrow = {nombre, poder, años, planeta, raza};
                 DefaultTableModel modelo = (DefaultTableModel) TablaSeresVivosEliminar.getModel();
                 modelo.addRow(newrow);
                 TablaSeresVivosEliminar.setModel(modelo);
                 TablaSeresVivosModificar.setModel(modelo);
                 DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
-                cb.addElement(new SerVivo(nombre, poder, años, planeta, raza));
+                cb.addElement(sv);
                 CBSeresVivos.setModel(cb);
-//                Universo uni = new Universo();
-                uni.getSeresvivos().add(new SerVivo(nombre, poder, años, planeta, raza));
+                uni.getSeresvivos().add(sv);
                 System.out.println(uni.getSeresvivos());
                 JOptionPane.showMessageDialog(this, "Ser vivo agregado exitosamente");
+                DefaultTreeModel m = (DefaultTreeModel) TreeSeresVivos.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+                DefaultMutableTreeNode nodoSerVivo;
+                nodoSerVivo = new DefaultMutableTreeNode(sv);
+                DefaultMutableTreeNode nodoPoder;
+                nodoPoder = new DefaultMutableTreeNode("Poder: " + sv.getPoder());
+                DefaultMutableTreeNode nodoPlaneta;
+                nodoPlaneta = new DefaultMutableTreeNode(sv.getPlaneta());
+                DefaultMutableTreeNode nodoEdad;
+                nodoEdad = new DefaultMutableTreeNode("Edad: " + sv.getAños());
+                DefaultMutableTreeNode nodoRaza;
+                nodoRaza = new DefaultMutableTreeNode(sv.getRaza());
+                nodoRaza.add(nodoEdad);
+                nodoRaza.add(nodoPoder);
+                nodoPlaneta.add(nodoRaza);
+                nodoSerVivo.add(nodoPlaneta);
+                raiz.add(nodoSerVivo);
+                m.reload();
                 NombreSerVivo.setText("");
                 PoderSerVivo.setText("");
                 AñosSerVivo.setText("");
@@ -624,7 +722,7 @@ public class Inicio extends javax.swing.JFrame {
                     bw.close();
                     fw.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 } // Fin Try Catch
             } else {
                 JFileChooser jfc = new JFileChooser("./");
@@ -741,8 +839,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTable TablaSeresVivosEliminar;
     private javax.swing.JTable TablaSeresVivosModificar;
     private javax.swing.JTextArea TextAreaArchivo;
+    private javax.swing.JTree TreeSeresVivos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -760,6 +860,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 static ArrayList<SerVivo> seresvivos = new ArrayList();
