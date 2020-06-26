@@ -120,11 +120,11 @@ public class Universo {
         } // Fin If
     } // Fin Cargar Archivo2
 
-    public void EliminarElemento(String n) throws IOException {
+    public void EliminarElemento(SerVivo sv) throws IOException {
         try {
             CargarArchivo2();
             for (int i = 0; i < seresvivos.size(); i++) {
-                if (seresvivos.get(i).getNombre().equals(n)) {
+                if (seresvivos.get(i) == sv) {
                     seresvivos.remove(i);
                 } // Fin If
             } // Fin For

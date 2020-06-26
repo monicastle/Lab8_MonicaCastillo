@@ -36,6 +36,14 @@ public class Inicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         pb = new HiloProgressBar(ProgressBarHilo);
         pb.start();
+        //   ### CAMBIOS: ###
+        // - Arreglo en el combo box, el cual enviaba datos erroneos al archivo de texto, al modificar y eliminar antes de crear 
+        //   un universo. 
+        // - Implementacion de un Jtree que muestra la informacion de un ser vivo al agregarse uno
+        // - Uso de hilos en una progress bar que avanza cada segundo, como un cronometro
+        // - Correcion al Cargar un archivo el cual ya no tira un exception.
+        // - Intento pobre de hacer modificar y eliminar, ahi si te fallo. Mis intentos solo llevaban a exceptions porque
+        //   no me complique bastante :'(
     }
 
     /**
@@ -506,11 +514,11 @@ public class Inicio extends javax.swing.JFrame {
                 TablaSeresVivosEliminar.setModel(modelo);
                 TablaSeresVivosModificar.setModel(modelo);
                 DefaultComboBoxModel cb = (DefaultComboBoxModel) CBSeresVivos.getModel();
-                Universo uni = new Universo(selectedFile.getPath());
-                uni.CargarArchivo2();
-                uni.EliminarElemento(((SerVivo) cb.getElementAt(pos)).getNombre());
-                cb.removeElementAt(pos);
-                CBSeresVivos.setModel(cb);
+//                Universo uni = new Universo(selectedFile.getPath());
+//                uni.CargarArchivo2();
+//                uni.EliminarElemento(((SerVivo) cb.getElementAt(pos)));
+//                cb.removeElementAt(pos);
+//                CBSeresVivos.setModel(cb);
                 JOptionPane.showMessageDialog(null, "Se elimino con exito");
             } // Fin If
         } catch (Exception e) {
